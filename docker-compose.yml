@@ -44,6 +44,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       REDIS_HOST: redis
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       REDIS_PORT: 6379
       CACHE_DRIVER: redis
       SESSION_DRIVER: redis
@@ -90,6 +91,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       REDIS_HOST: redis
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       QUEUE_CONNECTION: redis
     volumes:
       - app_storage:/var/www/html/storage
@@ -122,6 +124,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       REDIS_HOST: redis
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       QUEUE_CONNECTION: redis
     volumes:
       - app_storage:/var/www/html/storage
@@ -146,6 +149,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       REDIS_HOST: redis
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       QUEUE_CONNECTION: redis
     volumes:
       - app_storage:/var/www/html/storage
@@ -166,7 +170,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./docker/postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
-      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     networks:
       - smm_network
